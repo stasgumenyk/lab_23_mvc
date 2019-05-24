@@ -6,6 +6,7 @@ import com.example.demo.Utils.Validator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.Scanner;
 
 
@@ -55,7 +56,7 @@ public class ConsoleProcessor implements CommandLineRunner {
                     System.out.println("Enter body:");
                     String body = consoleScanner.nextLine();
 
-                    System.out.println("Enter date(dd-mm-yyyy hh:mm):");
+                    System.out.println("Enter date(dd/mm/yyyy hh:mm):");
                     String date = "";
                     Boolean validDate = false;
                     while (!validDate){

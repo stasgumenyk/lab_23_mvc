@@ -24,6 +24,10 @@ public class EmailService {
         emails.get(emails.indexOf(email)).setSend(email.getSend());
     }
 
+    public Boolean remove(String id){
+        return emailRepository.remove(id);
+    }
+
     public void add(Email email){
         emailRepository.add(email);
     }
@@ -39,6 +43,7 @@ public class EmailService {
     public List<Email> getUnsentEmails(){
         return emailRepository.getUnsentEmails();
     }
+
     public List<Email> getEmailsToSend(){
         return emailRepository.getEmailsToSend();
     }

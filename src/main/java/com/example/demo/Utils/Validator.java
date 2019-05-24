@@ -18,7 +18,7 @@ public class Validator {
 
     public Validator() {
         emailPattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-        dateFormat = new SimpleDateFormat("dd-mm-yyyy HH:mm");
+        dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         dateFormat.setLenient(false);
     }
 

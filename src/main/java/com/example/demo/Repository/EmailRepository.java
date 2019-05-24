@@ -71,7 +71,7 @@ public class EmailRepository {
     public List<Email> getEmailsToSend(){
         Date currentDate = new Date();
         return getUnsentEmails().stream()
-                .filter(el -> el.getDate().getTime() < currentDate.getTime())
+                .filter(el -> el.getDate().before(currentDate) )
                 .collect(Collectors.toList());
     }
 
@@ -80,5 +80,9 @@ public class EmailRepository {
         emails = emails.stream()
                 .distinct()
                 .collect(Collectors.toList());
+    }
+
+    public Boolean remove(String id){
+        return emails.removeIf(el->el.getId().equals(id));
     }
 }
