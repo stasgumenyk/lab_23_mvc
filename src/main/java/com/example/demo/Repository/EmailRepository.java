@@ -2,6 +2,7 @@ package com.example.demo.Repository;
 
 
 import com.example.demo.Model.Email;
+import com.example.demo.Model.EmailDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.MismatchedInputException;
 import org.springframework.beans.factory.DisposableBean;
@@ -92,6 +93,12 @@ public class EmailRepository {
         optionalEmail.ifPresent(el -> emails.set(emails.indexOf(el), email));
 
         return optionalEmail.isPresent();
+    }
+
+    public Email save(EmailDto dto){
+        Email saved = new Email(dto);
+        emails.add(saved);
+        return saved;
     }
 
 

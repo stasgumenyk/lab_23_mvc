@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
 
@@ -21,17 +22,28 @@ public class Email{
 
     private String body;
 
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy HH:mm")
     private Date date;
 
     private Boolean send;
 
     public Email(String recipient, String subject, String body, Date date, Boolean send) {
-        id = RandomStringUtils.randomAlphanumeric(10);
+        this.id = RandomStringUtils.randomAlphanumeric(10);
         this.recipient = recipient;
         this.subject = subject;
         this.body = body;
         this.date = date;
         this.send = send;
+    }
+
+    public Email(EmailDto dto) {
+        this.id = RandomStringUtils.randomAlphanumeric(10);
+        this.recipient = dto.getRecipient();
+        this.subject = dto.getSubject();
+        this.body = dto.getBody();
+        this.date = dto.getDate();
+        this.send = false;
     }
 
     @Override

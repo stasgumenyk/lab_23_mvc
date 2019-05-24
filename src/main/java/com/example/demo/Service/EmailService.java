@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.Email;
+import com.example.demo.Model.EmailDto;
 import com.example.demo.Repository.EmailRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,10 @@ public class EmailService {
 
     public Boolean update(Email email){
         return emailRepository.update(email);
+    }
+
+    public Email save(EmailDto dto){
+        return emailRepository.save(dto);
     }
 
     public void add(Email email){
