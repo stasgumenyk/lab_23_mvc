@@ -14,10 +14,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -85,4 +82,17 @@ public class EmailRepository {
     public Boolean remove(String id){
         return emails.removeIf(el->el.getId().equals(id));
     }
+
+    public Boolean update(Email email){
+
+        final Optional<Email> optionalEmail = emails.stream()
+                .filter(info -> info.getId().equals(email.getId()))
+                .findAny();
+
+        optionalEmail.ifPresent(el -> emails.set(emails.indexOf(el), email));
+
+        return optionalEmail.isPresent();
+    }
+
+
 }

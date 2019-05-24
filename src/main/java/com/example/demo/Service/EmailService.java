@@ -28,6 +28,10 @@ public class EmailService {
         return emailRepository.remove(id);
     }
 
+    public Boolean update(Email email){
+        return emailRepository.update(email);
+    }
+
     public void add(Email email){
         emailRepository.add(email);
     }

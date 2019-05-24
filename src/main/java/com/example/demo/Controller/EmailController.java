@@ -33,9 +33,17 @@ public class EmailController {
     }
 
     @DeleteMapping("/{emailId}")
-    public ResponseEntity removeSong(@PathVariable("emailId") String emailId) {
+    public ResponseEntity removePendingEmail(@PathVariable("emailId") String emailId) {
         return emailService.remove(emailId)
                 ? ResponseEntity.status(HttpStatus.OK).body("Deleted email successfully")
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email with id " + emailId + " not found" );
         }
-    }
+
+    @PutMapping()
+    public ResponseEntity updatePendingEmail(@RequestBody Email updates) {
+        return emailService.update(updates)
+                ? ResponseEntity.status(HttpStatus.OK).body("Updated email successfully")
+                : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email with id " + updates.getId() + " not found" );
+        }
+
+}
