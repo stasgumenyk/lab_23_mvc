@@ -32,7 +32,7 @@ public class EmailController {
                 : ResponseEntity.status(HttpStatus.NOT_FOUND).body("Email with id " + emailId + " not found" );
         }
 
-    @PutMapping()
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity updatePendingEmail(@RequestBody Email updates) {
         return emailService.update(updates)
                 ? ResponseEntity.status(HttpStatus.OK).body("Updated email successfully")
@@ -42,7 +42,7 @@ public class EmailController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Email> createEmailFromJson(@RequestBody EmailDto dto) {
         return ResponseEntity
-                .status(HttpStatus.OK)
+                .status(HttpStatus.CREATED)
                 .body(emailService.save(dto));
     }
 

@@ -61,7 +61,6 @@ public class ConsoleProcessor implements CommandLineRunner {
                     Boolean validDate = false;
                     while (!validDate){
                         date = consoleScanner.nextLine();
-                        //date = "21-01-2019 18:54";
                         if (validator.isDateValid(date)){
                             validDate = true;
                         } else {
