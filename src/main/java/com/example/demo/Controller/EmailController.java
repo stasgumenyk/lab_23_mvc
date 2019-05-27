@@ -2,7 +2,7 @@ package com.example.demo.Controller;
 
 
 import com.example.demo.Model.Email;
-import com.example.demo.Model.EmailDto;
+import com.example.demo.DTO.EmailDto;
 import com.example.demo.Service.EmailService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
 @Controller

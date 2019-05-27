@@ -2,10 +2,8 @@ package com.example.demo.Repository;
 
 
 import com.example.demo.Model.Email;
-import com.example.demo.Model.EmailDto;
+import com.example.demo.DTO.EmailDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
-import org.springframework.beans.factory.DisposableBean;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;

@@ -2,14 +2,11 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.Email;
-import com.example.demo.Model.EmailDto;
+import com.example.demo.DTO.EmailDto;
 import com.example.demo.Repository.EmailRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class EmailService {

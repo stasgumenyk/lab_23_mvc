@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.example.demo.DTO.EmailDto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
