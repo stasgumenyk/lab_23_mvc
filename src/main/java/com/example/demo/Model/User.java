@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 
+import com.example.demo.Model.Interface.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 @Getter
 @Setter
 @ToString
-public class User {
+public class User implements Entity {
 
     private String id;
 

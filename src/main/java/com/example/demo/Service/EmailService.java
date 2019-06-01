@@ -18,7 +18,7 @@ public class EmailService {
     }
 
     public void markAsSent(Email email){
-        List<Email> emails = emailRepository.getAllEmails();
+        List<Email> emails = emailRepository.getAll();
         emails.get(emails.indexOf(email)).setSend(email.getSend());
     }
 
@@ -38,8 +38,8 @@ public class EmailService {
         emailRepository.add(email);
     }
 
-    public List<Email> getAllEmails(){
-        return emailRepository.getAllEmails();
+    public List<Email> getAll(){
+        return emailRepository.getAll();
     }
 
     public List<Email> getSentEmails(){

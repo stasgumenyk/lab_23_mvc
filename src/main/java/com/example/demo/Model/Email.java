@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 import com.example.demo.DTO.EmailDto;
+import com.example.demo.Model.Interface.Entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -13,7 +14,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-public class Email{
+public class Email implements Entity {
 
     private String id;
 

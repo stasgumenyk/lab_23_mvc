@@ -72,7 +72,7 @@ public class ConsoleProcessor implements CommandLineRunner {
                     emailService.add(email);
                     break;
                 case "2":
-                    System.out.println(emailService.getAllEmails());
+                    System.out.println(emailService.getAll());
                     break;
                 case "3":
                     System.out.println(emailService.getSentEmails());
