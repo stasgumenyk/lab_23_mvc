@@ -31,7 +31,7 @@ public class Email implements Entity {
     private Boolean send;
 
     public Email(String recipient, String subject, String body, Date date, Boolean send) {
-        this.id = RandomStringUtils.randomAlphanumeric(10);
+        this.id = "email" + RandomStringUtils.randomAlphanumeric(10);
         this.recipient = recipient;
         this.subject = subject;
         this.body = body;

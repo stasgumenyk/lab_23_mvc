@@ -8,7 +8,7 @@ public class EmailAdapter {
 
     public static Email EmailDtoToEmail(EmailDto dto){
         Email email = new Email();
-        email.setId(RandomStringUtils.randomAlphanumeric(10));
+        email.setId("email" + RandomStringUtils.randomAlphanumeric(10));
         email.setRecipient(dto.getRecipient());
         email.setSubject(dto.getSubject());
         email.setBody(dto.getBody());
