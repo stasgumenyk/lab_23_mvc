@@ -4,6 +4,7 @@ package com.example.demo.Repository;
 import com.example.demo.Model.Email;
 import com.example.demo.DTO.EmailDto;
 import com.example.demo.Repository.Template.RepositoryTemplate;
+import com.example.demo.Utils.EmailAdapter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
@@ -69,7 +70,7 @@ public class EmailRepository extends RepositoryTemplate<Email> {
 
 
     public Email save(EmailDto dto){
-        Email saved = new Email(dto);
+        Email saved = EmailAdapter.EmailDtoToEmail(dto);
         return save(saved);
     }
 

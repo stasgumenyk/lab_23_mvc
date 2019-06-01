@@ -39,15 +39,6 @@ public class Email implements Entity {
         this.send = send;
     }
 
-    public Email(EmailDto dto) {
-        this.id = RandomStringUtils.randomAlphanumeric(10);
-        this.recipient = dto.getRecipient();
-        this.subject = dto.getSubject();
-        this.body = dto.getBody();
-        this.date = dto.getDate();
-        this.send = false;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
