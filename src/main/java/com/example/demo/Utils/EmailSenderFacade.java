@@ -2,7 +2,6 @@ package com.example.demo.Utils;
 
 
 import com.example.demo.Model.Email;
-import com.example.demo.ScheduledTask;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -14,7 +13,7 @@ public class EmailSenderFacade {
 
     private JavaMailSender mailSender;
 
-    private static org.slf4j.Logger logger = LoggerFactory.getLogger(ScheduledTask.class);
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(EmailSenderFacade.class);
 
     public EmailSenderFacade(JavaMailSender mailSender) {
         this.mailSender = mailSender;

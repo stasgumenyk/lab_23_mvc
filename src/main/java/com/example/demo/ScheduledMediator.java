@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ScheduledTask {
+public class ScheduledMediator {
 
     private EmailService emailService;
     private EmailSenderFacade emailSenderFacade;
 
-    public ScheduledTask(EmailService emailService, EmailSenderFacade emailSenderFacade) {
+    public ScheduledMediator(EmailService emailService, EmailSenderFacade emailSenderFacade) {
         this.emailService = emailService;
         this.emailSenderFacade = emailSenderFacade;
     }
