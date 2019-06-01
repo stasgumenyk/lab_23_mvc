@@ -2,7 +2,7 @@ package com.example.demo;
 
 import com.example.demo.Model.Email;
 import com.example.demo.Service.EmailService;
-import com.example.demo.Utils.EmailSender;
+import com.example.demo.Utils.EmailSenderFacade;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -12,18 +12,18 @@ import java.util.List;
 public class ScheduledTask {
 
     private EmailService emailService;
-    private EmailSender emailSender;
+    private EmailSenderFacade emailSenderFacade;
 
-    public ScheduledTask(EmailService emailService, EmailSender emailSender) {
+    public ScheduledTask(EmailService emailService, EmailSenderFacade emailSenderFacade) {
         this.emailService = emailService;
-        this.emailSender = emailSender;
+        this.emailSenderFacade = emailSenderFacade;
     }
 
     @Scheduled(fixedRate = 2000)
     public void scheduleTaskWithFixedRate() {
         List<Email> emails = emailService.getEmailsToSend();
         for (Email e:emails){
-            Boolean isSend = emailSender.sendEmail(e);
+            Boolean isSend = emailSenderFacade.sendEmail(e);
             e.setSend(isSend);
             emailService.markAsSent(e);
         }

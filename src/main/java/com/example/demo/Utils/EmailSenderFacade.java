@@ -10,13 +10,13 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
 @Component
-public class EmailSender {
+public class EmailSenderFacade {
 
     private JavaMailSender mailSender;
 
     private static org.slf4j.Logger logger = LoggerFactory.getLogger(ScheduledTask.class);
 
-    public EmailSender(JavaMailSender mailSender) {
+    public EmailSenderFacade(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
 
