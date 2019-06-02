@@ -6,6 +6,9 @@ import com.example.demo.Repository.UserRepository;
 import com.example.demo.Service.Template.ServiceTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserService extends ServiceTemplate<User> {
 
@@ -13,5 +16,9 @@ public class UserService extends ServiceTemplate<User> {
 
     public UserService(UserRepository userRepository) {
         super(userRepository);
+    }
+
+    public List<User> findByName(String name){
+        return getAll().stream().filter(el -> el.getUsername().equals(name)).collect(Collectors.toList());
     }
 }

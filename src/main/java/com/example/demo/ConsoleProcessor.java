@@ -1,7 +1,11 @@
 package com.example.demo;
 
 import com.example.demo.Model.Email;
+import com.example.demo.Model.User;
+import com.example.demo.Service.DishService;
 import com.example.demo.Service.EmailService;
+import com.example.demo.Service.OrderService;
+import com.example.demo.Service.UserService;
 import com.example.demo.Utils.Validator;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,15 +18,32 @@ import java.util.Scanner;
 public class ConsoleProcessor implements CommandLineRunner {
 
     private EmailService emailService;
+    private DishService dishService;
+    private OrderService orderService;
+    private UserService userService;
     private Validator validator;
 
-    public ConsoleProcessor(EmailService emailService, Validator validator) {
+
+
+    public ConsoleProcessor(EmailService emailService, DishService dishService, OrderService orderService, UserService userService, Validator validator) {
         this.emailService = emailService;
+        this.dishService = dishService;
+        this.orderService = orderService;
+        this.userService = userService;
         this.validator = validator;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        User loginedUser = userService.findByName("stasgumenyk").get(0);
+        if (loginedUser == null){
+            loginedUser = new User.UserBuilder("stasgumenyk")
+                    .setActivated(true)
+                    .setEmailAddress("stasgumenyk@gmail.com")
+                    .build();
+            userService.save(loginedUser);
+        }
 
         Boolean alive = true;
         while (alive){
