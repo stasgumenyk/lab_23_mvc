@@ -1,6 +1,7 @@
 package com.example.demo.Model;
 
 
+import com.example.demo.Model.Enums.Role;
 import com.example.demo.Model.Interface.Entity;
 import lombok.*;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -28,6 +29,7 @@ public class User implements Entity {
 
     public User(String username) {
         this.id = "user" + RandomStringUtils.randomAlphanumeric(10);
+        this.role = Role.USER;
         this.username = username;
     }
 
@@ -86,6 +88,7 @@ public class User implements Entity {
 
         public UserBuilder(String username) {
             this.id = "user" + RandomStringUtils.randomAlphanumeric(10);
+            this.role = Role.USER;
             this.username = username;
         }
 
