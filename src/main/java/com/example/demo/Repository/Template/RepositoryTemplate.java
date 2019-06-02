@@ -40,5 +40,12 @@ public class RepositoryTemplate<T extends Entity> {
             return t;
         }
 
+        public T get(String id){
+            return getAll().stream()
+                    .filter(key-> key.getId().equals(id))
+                    .findFirst()
+                    .orElse(null);
+        }
+
 
     }

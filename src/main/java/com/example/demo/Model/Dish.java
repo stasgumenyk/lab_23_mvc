@@ -13,19 +13,40 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Dish implements Entity {
 
     private String id;
 
     private String name;
 
-    private Date estimatedCookTime;
+    private String estimatedCookTime;
 
-    public Dish(String name, Date estimatedCookTime) {
+    private Double price;
+
+    public Dish(String name, String estimatedCookTime, Double price) {
         this.id = "dish" + RandomStringUtils.randomAlphanumeric(10);
         this.name = name;
         this.estimatedCookTime = estimatedCookTime;
+        this.price = price;
+    }
+
+    public String standartToString() {
+        return "Dish{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", estimatedCookTime='" + estimatedCookTime + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
+    @Override
+    public String toString() {
+        return '\n' + "--------------------------------------------" + '\n' +
+                " ID: " + id + '\n' +
+                " Назва : " + name + '\n' +
+                " Час приготування: " + estimatedCookTime + '\n' +
+                " Ціна: " + price + '\n' +
+                "--------------------------------------------\n";
     }
 
 }

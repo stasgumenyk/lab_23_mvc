@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import com.example.demo.Model.Dish;
 import com.example.demo.Model.Email;
+import com.example.demo.Model.Order;
 import com.example.demo.Model.User;
 import com.example.demo.Service.DishService;
 import com.example.demo.Service.EmailService;
@@ -33,10 +35,10 @@ public class ConsoleProcessor implements CommandLineRunner {
         this.validator = validator;
     }
 
-    @Override
-    public void run(String... args) throws Exception {
+    private User loginedUser;
 
-        User loginedUser = userService.findByName("stasgumenyk");
+    private void initStuff(){
+        loginedUser = userService.findByName("stasgumenyk");
         if (loginedUser == null){
             loginedUser = new User.UserBuilder("stasgumenyk")
                     .setActivated(true)
@@ -45,62 +47,59 @@ public class ConsoleProcessor implements CommandLineRunner {
             userService.save(loginedUser);
         }
 
+
+        if (dishService.findByName("Burger") == null){
+            Dish burger = new Dish("Burger", "15 minutes", 7.99);
+            dishService.add(burger);
+        }
+
+        if (dishService.findByName("Cola") == null){
+            Dish cola = new Dish("Cola", "1 minute", 2.99);
+            dishService.add(cola);
+        }
+
+        if (dishService.findByName("Fries") == null){
+            Dish fries = new Dish("Fries", "3 minutes", 5.75);
+            dishService.add(fries);
+        }
+
+        if (dishService.findByName("Test") == null){
+            Dish test = new Dish("Test", "0 minutes", 0.99);
+            dishService.add(test);
+        }
+
+
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        initStuff();
+
         Boolean alive = true;
         while (alive){
             System.out.println("You are logined as " + loginedUser.getUsername());
             System.out.println("What would you like to do? \nType in console to:");
-            System.out.println("1 - write new e-mail");
-            System.out.println("2 - print all emails");
-            System.out.println("3 - print only sent emails");
-            System.out.println("4 - print only unsent emails");
-            System.out.println("anything else - exit");
+            System.out.println("1 - print menu");
+            System.out.println("2 - print all orders");
+            System.out.println("3 - order a dish");
             Scanner consoleScanner = new Scanner(System.in);
             String input = consoleScanner.nextLine();
             switch (input){
                 case "1":
-
-                    System.out.println("Enter recipient:");
-                    String recipient = "";
-                    Boolean validRecipient = false;
-                    while (!validRecipient){
-                        recipient = consoleScanner.nextLine();
-                        if (validator.isEmailValid(recipient)){
-                            validRecipient = true;
-                        } else {
-                            System.out.println("E-mail address " + recipient + " is not valid. Please try again: ");
-                        }
-                    }
-
-                    System.out.println("Enter subject:");
-                    String subject = consoleScanner.nextLine();
-
-
-                    System.out.println("Enter body:");
-                    String body = consoleScanner.nextLine();
-
-                    System.out.println("Enter date(dd/mm/yyyy hh:mm):");
-                    String date = "";
-                    Boolean validDate = false;
-                    while (!validDate){
-                        date = consoleScanner.nextLine();
-                        if (validator.isDateValid(date)){
-                            validDate = true;
-                        } else {
-                            System.out.println("Date " + date + " is not valid. Please try again: ");
-                        }
-                    }
-
-                    Email email = new Email(recipient, subject, body, validator.parseDate(date), false);
-                    emailService.add(email);
+                    System.out.println(dishService.getAll());
                     break;
                 case "2":
-                    System.out.println(emailService.getAll());
+                    System.out.println(orderService.getAll());
                     break;
                 case "3":
-                    System.out.println(emailService.getSentEmails());
-                    break;
-                case "4":
-                    System.out.println(emailService.getUnsentEmails());
+                    System.out.println("Enter id of a dish:");
+                    String id = consoleScanner.nextLine();
+
+                    Dish dish = dishService.get(id);
+                    Order order = new Order(dish, loginedUser);
+                    orderService.add(order);
+
                     break;
                 default:
                     System.out.println("Farewell, stranger");

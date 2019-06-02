@@ -33,4 +33,8 @@ public class ServiceTemplate<T extends Entity> {
     public T save(T t){
         return repository.save(t);
     }
+
+    public T get(String id){
+        return repository.get(id);
+    }
 }

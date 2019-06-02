@@ -11,7 +11,6 @@ import org.apache.commons.lang3.RandomStringUtils;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Order implements Entity {
 
     private String id;
@@ -24,5 +23,14 @@ public class Order implements Entity {
         this.id = "dish" + RandomStringUtils.randomAlphanumeric(10);
         this.dish = dish;
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", dish=" + dish.standartToString() +
+                ", user=" + user +
+                '}';
     }
 }
