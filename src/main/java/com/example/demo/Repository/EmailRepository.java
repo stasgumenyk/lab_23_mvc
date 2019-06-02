@@ -49,30 +49,7 @@ public class EmailRepository extends RepositoryTemplate<Email> {
         }
     }
 
-    public List<Email> getUnsentEmails(){
-        return getAll().stream()
-                .filter(el -> !el.getSend())
-                .collect(Collectors.toList());
-    }
 
-    public List<Email> getSentEmails(){
-        return getAll().stream()
-                .filter(Email::getSend)
-                .collect(Collectors.toList());
-    }
-
-    public List<Email> getEmailsToSend(){
-        Date currentDate = new Date();
-        return getUnsentEmails().stream()
-                .filter(el -> el.getDate().before(currentDate) )
-                .collect(Collectors.toList());
-    }
-
-
-    public Email save(EmailDto dto){
-        Email saved = EmailAdapter.EmailDtoToEmail(dto);
-        return save(saved);
-    }
 
 
 }
