@@ -18,7 +18,10 @@ public class UserService extends ServiceTemplate<User> {
         super(userRepository);
     }
 
-    public List<User> findByName(String name){
-        return getAll().stream().filter(el -> el.getUsername().equals(name)).collect(Collectors.toList());
+    public User findByName(String name){
+        return getAll().stream()
+                .filter(key-> key.getUsername().equals(name))
+                .findFirst()
+                .orElse(null);
     }
 }

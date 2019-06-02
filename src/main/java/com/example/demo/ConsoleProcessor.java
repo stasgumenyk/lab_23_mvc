@@ -36,7 +36,7 @@ public class ConsoleProcessor implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        User loginedUser = userService.findByName("stasgumenyk").get(0);
+        User loginedUser = userService.findByName("stasgumenyk");
         if (loginedUser == null){
             loginedUser = new User.UserBuilder("stasgumenyk")
                     .setActivated(true)
@@ -47,6 +47,7 @@ public class ConsoleProcessor implements CommandLineRunner {
 
         Boolean alive = true;
         while (alive){
+            System.out.println("You are logined as " + loginedUser.getUsername());
             System.out.println("What would you like to do? \nType in console to:");
             System.out.println("1 - write new e-mail");
             System.out.println("2 - print all emails");
