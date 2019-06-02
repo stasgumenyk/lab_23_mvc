@@ -27,7 +27,7 @@ public class UserRepository extends RepositoryTemplate<User> {
         String json = null;
 
         try {
-            json = new String(Files.readAllBytes(Paths.get("users.json")), StandardCharsets.UTF_8);
+            json = new String(Files.readAllBytes(Paths.get("pseudoDB/users.json")), StandardCharsets.UTF_8);
             User[] myObjects = mapper.readValue(json, User[].class);
             result.addAll(Arrays.asList(myObjects));
             //result = Arrays.asList(myObjects);
@@ -41,7 +41,7 @@ public class UserRepository extends RepositoryTemplate<User> {
     private void saveUsers() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File("users.json"), data );
+            mapper.writeValue(new File("pseudoDB/users.json"), data );
         } catch (IOException e) {
             e.printStackTrace();
         }

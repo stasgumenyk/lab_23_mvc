@@ -27,7 +27,7 @@ public class OrderRepository extends RepositoryTemplate<Order> {
         String json = null;
 
         try {
-            json = new String(Files.readAllBytes(Paths.get("orders.json")), StandardCharsets.UTF_8);
+            json = new String(Files.readAllBytes(Paths.get("pseudoDB/orders.json")), StandardCharsets.UTF_8);
             Order[] myObjects = mapper.readValue(json, Order[].class);
             result.addAll(Arrays.asList(myObjects));
             //result = Arrays.asList(myObjects);
@@ -41,7 +41,7 @@ public class OrderRepository extends RepositoryTemplate<Order> {
     private void saveOrders() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File("orders.json"), data );
+            mapper.writeValue(new File("pseudoDB/orders.json"), data );
         } catch (IOException e) {
             e.printStackTrace();
         }

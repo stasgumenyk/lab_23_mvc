@@ -29,7 +29,7 @@ public class EmailRepository extends RepositoryTemplate<Email> {
         String json = null;
 
         try {
-            json = new String(Files.readAllBytes(Paths.get("emails.json")), StandardCharsets.UTF_8);
+            json = new String(Files.readAllBytes(Paths.get("pseudoDB/emails.json")), StandardCharsets.UTF_8);
             Email[] myObjects = mapper.readValue(json, Email[].class);
             result.addAll(Arrays.asList(myObjects));
             //result = Arrays.asList(myObjects);
@@ -43,7 +43,7 @@ public class EmailRepository extends RepositoryTemplate<Email> {
     private void saveEmails() {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(new File("emails.json"), data );
+            mapper.writeValue(new File("pseudoDB/emails.json"), data );
         } catch (IOException e) {
             e.printStackTrace();
         }
